@@ -1,0 +1,80 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "delectus",
+      "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+      "author": "ele",
+      "image": "https://placehold.co/400"
+    },
+    {
+      "id": 2,
+      "title": "quis ut",
+      "author": "uis",
+      "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+      "image": "https://placehold.co/400"
+    },
+    {
+      "id": 3,
+      "title": "fugiat",
+      "author": "junior",
+      "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+      "image": "https://placehold.co/400"
+    },
+    {
+      "id": 4,
+      "title": "et porro",
+      "author": "elias",
+      "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+      "image": "https://placehold.co/400"
+    },
+    {
+      "id": 5,
+      "title": "laboriosamm",
+      "author": "abo",
+      "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+
+      "image": "https://placehold.co/400"
+    },
+    {
+      "id": 6,
+      "title": "qui ullam",
+      "author": "ui ",
+      "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+
+      "image": "https://placehold.co/400"
+    },
+    {
+      "id": 7,
+      "title": "illo expedita",
+      "author": "llo",
+      "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+
+      "image": "https://placehold.co/400"
+    },
+    {
+      "id": 8,
+      "title": "quo adipisci",
+      "author": "uo",
+      "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+
+      "image": "https://placehold.co/400"
+    },
+    {
+      "id": 9,
+      "title": "molestiae",
+      "author": "ole",
+      "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+
+      "image": "https://placehold.co/400"
+    },
+    {
+      "id": 10,
+      "title": "illo",
+      "author": "llo",
+      "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+
+      "image": "https://placehold.co/400"
+    }
+  ]
+}

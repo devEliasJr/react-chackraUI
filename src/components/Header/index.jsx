@@ -6,35 +6,59 @@ import {
   Image,
   Input,
   InputGroup,
-  InputLeftAddon,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
+  InputRightElement,
+  FormControl,
 } from "@chakra-ui/react";
 import logo from "../../assets/logo.svg";
 import { FaSearch, FaChevronDown } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export function Header() {
   const navigate = useNavigate();
-  return (
-    <Flex p={5} align={"center"} justifyContent={"center"} gap={3}>
-      <Flex>
-        <Image src={logo} color={"gray.500"} />
-        <Heading>EliasDev</Heading>
-      </Flex>
+  const [query, setQuery] = useState("");
 
-      <Flex flex={1}>
-        <InputGroup gap={1}>
-          <Input type="text" placeholder="phone number" />
-          <IconButton
-            type="submit"
-            aria-label="Search database"
-            icon={<FaSearch />}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log("handle OK");
+    console.log("Q:" + query);
+  };
+  return (
+    <Flex p={5} align={"center"} gap={3}>
+      <Link to="/">
+        <Flex>
+          <Image src={logo} color={"gray.500"} />
+          <Heading>EliasDev</Heading>
+        </Flex>
+      </Link>
+
+      <FormControl style={{ flex: 1 }} as={'form'}>
+        <InputGroup size="md">
+          <Input
+            type="text"
+            onChange={(e) => {
+              setQuery(e.target.value);
+            }}
+            value={query}
           />
+
+          <InputRightElement>
+            <Button
+              type="submit"
+              size="sm"
+              onClick={handleSubmit}
+              background={"transparent"}
+            >
+              <FaSearch />
+            </Button>
+          </InputRightElement>
         </InputGroup>
-      </Flex>
+      </FormControl>
 
       <Menu>
         <MenuButton as={Button} rightIcon={<FaChevronDown size={12} />}>
@@ -42,7 +66,7 @@ export function Header() {
         </MenuButton>
         <MenuList>
           <MenuItem>
-            <Link to="/">Meu Painel</Link>
+            <Link to="/dashboard">Dashboard</Link>
           </MenuItem>
           <MenuItem>
             <Link to="/login">Criar Novo Anuncio</Link>
