@@ -11,17 +11,31 @@ import {
   HStack,
   Heading,
   SimpleGrid,
+  SkeletonCircle,
+  SkeletonText,
   Text,
 } from "@chakra-ui/react";
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Dashboard() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  console.log(error);
+  console.log(tasks);
 
   const fetchApi = async () => {
-    const res = await fetch("http://localhost:3000/tasks");
-    const data = await res.json();
-    setTasks(data);
+    setLoading(true);
+    try {
+      const response = await axios.get("http://localhost:3000/tasks");
+      setTasks(response.data);
+    } catch (error) {
+      setError(true);
+    }
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -30,11 +44,31 @@ export default function Dashboard() {
 
   return (
     <SimpleGrid p={3} spacing={10} minChildWidth={"300px"}>
-      {tasks &&
+      {loading && (
+        <Box
+          padding="6"
+          boxShadow="lg"
+          bg="white"
+          maxW={"400px"}
+          minH={"300px"}
+        >
+          <SkeletonCircle size="10" />
+          <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="2" />
+        </Box>
+      )}
+      {error && <p> Ocorreu um erro, por favor tente mais tarde!</p>}
+      {!error &&
+        tasks &&
+        tasks.length > 0 &&
         tasks.map((task) => (
-          <Card key={task.id} borderTop={'8px'} borderColor={'purple.400'} bg={'white'}>
+          <Card
+            key={task.id}
+            borderTop={"8px"}
+            borderColor={"purple.400"}
+            bg={"white"}
+          >
             <CardHeader>
-              <Flex gap={5} alignItems={'center'}>
+              <Flex gap={5} alignItems={"center"}>
                 <Box w={"50px"} h={"50"}>
                   <Text>AV</Text>
                 </Box>
@@ -48,11 +82,15 @@ export default function Dashboard() {
 
             <CardBody color={"gray.500"}>{task.description}</CardBody>
 
-            <Divider borderColor={'gray.200'}/>
+            <Divider borderColor={"gray.200"} />
             <CardFooter>
               <HStack>
-                <Button variant={'ghost'} leftIcon={<ViewIcon/>}>Watch</Button>
-                <Button  variant={'ghost'} leftIcon={<EditIcon/>}>Comment</Button>
+                <Button variant={"ghost"} leftIcon={<ViewIcon />}>
+                  Watch
+                </Button>
+                <Button variant={"ghost"} leftIcon={<EditIcon />}>
+                  Comment
+                </Button>
               </HStack>
             </CardFooter>
           </Card>
