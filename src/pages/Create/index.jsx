@@ -7,13 +7,42 @@ import {
   FormLabel,
   Input,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { Form, redirect, useNavigation } from "react-router-dom";
+import React, { useEffect } from "react";
+import {
+  Form,
+  useNavigation,
+  useActionData,
+  useNavigate,
+} from "react-router-dom";
 
 export default function Create() {
+  const toast = useToast();
+  const data = useActionData();
+
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
+
+  const navigate = useNavigate();
+
+  const showToast = () => {
+    toast({
+      title: "Form submitted",
+      description: "Successfully submitted the form",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+  };
+
+  useEffect(() => {
+    if (data && data.status === "sucess") {
+      showToast();
+      navigate("/");
+    }
+  }, [data, navigate]);
+
   return (
     <Box maxw="480px">
       <Form method="POST">
@@ -50,29 +79,43 @@ export default function Create() {
         >
           Submit
         </Button>
+        {data && data.error && <p>{data.error}</p>}
       </Form>
     </Box>
   );
 }
 
 export const createAction = async ({ request }) => {
+  //Pega as informações do Formulário
   const data = await request.formData();
 
-  const task = {
+  //Monta o objeto
+  const post = {
     title: data.get("title"),
     description: data.get("description"),
     isPriority: data.get("isPriority") === "",
   };
-
-  console.log(task);
-
-  await fetch("http://localhost:3000/posts", {
+  //Tratamento das Condições do Formulário
+  if (post.title.length < 10) {
+    return {
+      error: "menor que 10",
+    };
+  }
+  // Executa a Requisição de Fetch
+  const res = await fetch("http://localhost:3000/posts", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(task),
+    body: JSON.stringify(post),
   });
 
-  return redirect("/");
+  //Verifica o resultado da requisição
+  if (res.ok) {
+    return {
+      status: "sucess",
+    };
+  } else {
+    throw new Response("Fetch Api Error", { status: 503 });
+  }
 };
