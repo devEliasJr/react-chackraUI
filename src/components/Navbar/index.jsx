@@ -1,3 +1,4 @@
+import { UnlockIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -5,22 +6,38 @@ import {
   HStack,
   Heading,
   Spacer,
-  Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 
 export default function Navbar() {
+  const toast = useToast();
+
+  const showToast = () => {
+    toast({
+      title: "Logout out",
+      description: "Sucessfuly logged out",
+      duration: 5000,
+      isClosable: true,
+      status: "success",
+      position: "top",
+      icon: <UnlockIcon />,
+    });
+  };
+
   return (
-    <Flex as={"nav"} p={"10"} mb={'40px'} alignItems={"center"} gap={"10px"}>
+    <Flex as={"nav"} p={"10"} mb={"40px"} alignItems={"center"} gap={"10px"}>
       <Heading as={"h1"}>Elias Dev</Heading>
       <Spacer />
 
-      <HStack spacing={'20px'}>
+      <HStack spacing={"20px"}>
         <Box bg={"gray.200"} p={"10px"}>
           M
         </Box>
         <Text>m@email.com</Text>
-        <Button colorScheme="purple">Logout</Button>
+        <Button colorScheme="purple" onClick={showToast}>
+          Logout
+        </Button>
       </HStack>
     </Flex>
     // <Flex bg={"gray.200"} justifyContent={"space-between"} wrap={'wrap'} gap={2}>
