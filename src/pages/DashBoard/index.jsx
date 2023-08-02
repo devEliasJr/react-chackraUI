@@ -29,7 +29,7 @@ export default function Dashboard() {
   const fetchApi = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:3000/tasks");
+      const response = await axios.get("http://localhost:3000/posts");
       setTasks(response.data);
     } catch (error) {
       setError(true);

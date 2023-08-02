@@ -1,42 +1,61 @@
-import { Box, Container, Heading, Text } from "@chakra-ui/react";
+import {
+  ChatIcon,
+  CheckCircleIcon,
+  EmailIcon,
+  StarIcon,
+} from "@chakra-ui/icons";
+import {
+  List,
+  ListIcon,
+  ListItem,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+} from "@chakra-ui/react";
 import React from "react";
 
 export default function Profile() {
-
-  const boxStyles = {
-    p: "10px",
-    bg: "purple.300",
-    color: "white",
-    m: "10px",
-    textAlign: "start",
-    filter: 'blur(2px)',
-    ':hover': {
-      color: 'black',
-      bg: 'blue.200'
-    }
-  }
-
-  const boxHovers = {
-    ':hover': {
-      bg: 'red.300'
-    }
-  }
   return (
-    <Container as={"section"} maxWidth={"6xl"} py={"20px"}>
-      <Heading my={"30"} p={"10px"}>
-        Chakra Ui Comp
-      </Heading>
-      <Text ml={"30px"} color={"blue.300"} fontWeight={"bold"}>
-        Lorem, ipsum dolor.
-      </Text>
-
-      <Box sx={boxHovers} my={"7"} p={"5"} bg={"orange"}>
-        <Text>This is a box</Text>
-      </Box>
-
-      <Box sx={boxStyles}>
-        Hello
-      </Box>
-    </Container>
+    <Tabs mt="40px" p="20px" colorScheme="purple" variant="enclosed">
+      <TabList>
+        <Tab _selected={{ color: "white", bg: "purple.400" }}>Account Info</Tab>
+        <Tab _selected={{ color: "white", bg: "purple.400" }}>Task History</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>
+          <List spacing={4}>
+            <ListItem>
+              <ListIcon as={EmailIcon} color="teal.400" />
+              email: eliasjr@email.com
+            </ListItem>
+            <ListItem>
+              <ListIcon as={ChatIcon} color="teal.400" />
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
+              corporis accusamus explicabo.
+            </ListItem>
+            <ListItem>
+              <ListIcon as={StarIcon} color="teal.400" />
+              email: eliasjr@email.com
+            </ListItem>
+          </List>
+        </TabPanel>
+        <TabPanel>
+          <List spacing={4}>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="teal.400" />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis
+              dolores perspiciatis animi.
+            </ListItem>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="red.400" />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis
+              dolores perspiciatis animi.
+            </ListItem>
+          </List>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
   );
 }
