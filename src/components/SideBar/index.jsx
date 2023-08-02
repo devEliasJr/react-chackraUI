@@ -4,7 +4,16 @@ import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
   return (
-    <List color={"white"} fontSize={"1.2em"} spacing={4} padding={0}>
+    <List
+      display={"flex"}
+      flexDirection={{sm: 'row', lg:'column', xl: 'column'}}
+      flexWrap={'wrap'}
+      alignItems={"start"}
+      justifyContent={"center"}
+      color={"white"}
+      fontSize={"1.2em"}
+      gap={4}
+    >
       <ListItem>
         <NavLink to="/dashboard">
           <Flex align={"center"}>
@@ -13,6 +22,7 @@ export default function Sidebar() {
           </Flex>
         </NavLink>
       </ListItem>
+
       <ListItem>
         <NavLink to="/create">
           <Flex align={"center"}>

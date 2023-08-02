@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import { Header } from "../../components/Header";
 import { Grid, GridItem } from "@chakra-ui/react";
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/SideBar";
@@ -10,7 +9,7 @@ export const DefaultLayout = () => {
       <GridItem
         as="aside"
         colSpan={{ base: 6, lg: 2, xl: 1 }}
-        bg={"purple.400"}
+        bg="brand.600"
         minHeight={{lg: '100vh'}}
         p={{ base: "20px", lg: "30px" }}
       >

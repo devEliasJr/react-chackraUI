@@ -1,14 +1,19 @@
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
 import "./App.css";
-import { DefaultLayout } from "./Layout/DefaultLayout";
-import ErrorPage from "./routes/ErrorPage";
+
 import { Contact } from "./pages/Contact";
 import ContactDetails from "./pages/Contact/ContacDetails";
 import Dashboard from "./pages/DashBoard";
 import Create, { createAction } from "./pages/Create";
 import Profile from "./pages/Profile";
+import { DefaultLayout } from "./Layout/defaultLayout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
